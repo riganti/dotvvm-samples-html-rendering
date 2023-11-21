@@ -1,0 +1,22 @@
+﻿@viewModel HtmlRendering.ViewModels.DefaultViewModel, HtmlRendering
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <h1>Rendering table into HTML</h1>
+
+    <div>
+        <dot:Button Text="Generate HTML" Click="{command: Html = GenerateHtml()}" />
+    </div>
+
+    <dot:GridView DataSource="{value: Customers}" ID="grid">
+        <dot:GridViewTextColumn HeaderText="ID" ValueBinding="{value: Id}" />
+        <dot:GridViewTextColumn HeaderText="First Name" ValueBinding="{value: FirstName}" />
+        <dot:GridViewTextColumn HeaderText="Last Name" ValueBinding="{value: LastName}" />
+        <dot:GridViewTextColumn HeaderText="Birth Date" ValueBinding="{value: BirthDate}" FormatString="d" />
+        <dot:GridViewTextColumn HeaderText="Total Spent Amount" ValueBinding="{value: SpentAmount}" FormatString="n0" />
+    </dot:GridView>
+    <dot:DataPager DataSet="{value: Customers}" />
+    
+    <pre>{{value: Html}}</pre>
+
+</dot:Content>
